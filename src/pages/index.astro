@@ -1,23 +1,63 @@
 ---
 // src/pages/index.astro
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+// 1. 記事データを取得し、新しい順に並べ替え
+const allPosts = await getCollection('blog');
+const sortedPosts = allPosts.sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
 ---
 
 <BaseLayout title="Entrance">
-	<div class="flex flex-col items-center justify-center min-h-[60vh] space-y-8 text-center">
+	<div class="flex flex-col min-h-screen py-12 md:py-24">
 		
-        <h1 class="font-display text-5xl md:text-7xl font-bold tracking-[0.2em] text-monolith-text">
-			MONOLITH
-		</h1>
-		
-        <p class="text-lg md:text-xl text-monolith-sub font-serif">
-			読むこと自体を、儀式化する。
-		</p>
+		<section class="flex flex-col items-center justify-center space-y-6 mb-24 md:mb-32 text-center">
+			<h1 class="font-display text-5xl md:text-7xl font-bold tracking-[0.25em] text-monolith-text pl-4">
+				MONOLITH
+			</h1>
+			<p class="text-sm md:text-base text-monolith-sub font-serif tracking-widest opacity-80">
+				沈黙を読み、静寂を書く。
+			</p>
+		</section>
 
-        <div class="pt-12">
-            <a href="/archives" class="text-monolith-accent hover:opacity-80 transition-opacity border-b border-monolith-accent/50 pb-1">
-                Enter the Archive
-            </a>
-        </div>
+		<section class="grid grid-cols-1 gap-12 md:gap-16 max-w-2xl mx-auto w-full">
+			{sortedPosts.map((post) => (
+				<article class="group relative flex flex-col space-y-3">
+					{/* 日付 */}
+					<div class="text-xs font-display tracking-widest text-monolith-sub group-hover:text-monolith-accent transition-colors duration-500">
+						<time datetime={post.data.pubDate.toISOString()}>
+							{post.data.pubDate.toLocaleDateString('en-US', {
+								year: 'numeric',
+								month: 'long',
+								day: 'numeric',
+							})}
+						</time>
+					</div>
+
+					{/* タイトル (リンク) */}
+					<a href={`/${post.slug}`} class="block">
+						<h2 class="text-2xl md:text-3xl font-serif font-medium leading-tight text-monolith-text group-hover:opacity-70 transition-opacity duration-500">
+							{post.data.title}
+						</h2>
+					</a>
+
+					{/* 説明文 */}
+					<p class="text-sm text-monolith-sub/80 font-serif leading-relaxed line-clamp-2">
+						{post.data.description}
+					</p>
+
+					{/* 装飾線 */}
+					<div class="absolute -bottom-6 left-0 w-full h-px bg-monolith-sub/20 scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left ease-out"></div>
+				</article>
+			))}
+		</section>
+
+        {sortedPosts.length === 0 && (
+            <div class="text-center text-monolith-sub text-sm mt-12 font-serif">
+                まだ記事は存在しない。
+            </div>
+        )}
 	</div>
 </BaseLayout>
