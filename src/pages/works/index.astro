@@ -1,0 +1,44 @@
+---
+// src/pages/works/index.astro - Works List Page
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionTitle from "../../components/ui/SectionTitle";
+import WorkCard from "../../components/ui/WorkCard";
+
+const allWorks = await getCollection("works");
+const sortedWorks = allWorks.sort(
+    (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+---
+
+<BaseLayout title="WORKS" description="プロジェクト一覧">
+    <section class="pt-32 pb-16 md:pt-40 md:pb-24">
+        <SectionTitle
+            client:visible
+            title="WORKS"
+            subtitle="Projects & Extensions"
+        />
+    </section>
+
+    <section class="pb-24 md:pb-32">
+        {
+            sortedWorks.length > 0 ? (
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {sortedWorks.map((work) => (
+                        <WorkCard
+                            client:visible
+                            title={work.data.title}
+                            description={work.data.description}
+                            category={work.data.category}
+                            href={`/works/${work.slug}`}
+                        />
+                    ))}
+                </div>
+            ) : (
+                <div class="text-center py-16">
+                    <p class="font-serif text-kg-text-muted">Coming Soon...</p>
+                </div>
+            )
+        }
+    </section>
+</BaseLayout>

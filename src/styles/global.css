@@ -1,4 +1,4 @@
-/* src/styles/global.css */
+/* src/styles/global.css - KEIGOLY Official Site */
 @import "tailwindcss"; 
 
 /* フォント読み込み */
@@ -10,34 +10,129 @@
 
 /* テーマ設定 (Tailwind v4) */
 @theme {
-  --color-monolith-bg: #050505;
-  --color-monolith-text: #E0E0E0;
-  --color-monolith-accent: #C5A059;
-  --color-monolith-sub: #4A5568;
+  /* カラーパレット */
+  --color-kg-bg: #0a0a0a;
+  --color-kg-bg-alt: #111111;
+  --color-kg-surface: #1a1a1a;
+  --color-kg-text: #f0f0f0;
+  --color-kg-text-muted: #888888;
+  --color-kg-accent: #c9a861;
+  --color-kg-accent-hover: #dfc07a;
+  --color-kg-border: #2a2a2a;
 
+  /* フォント */
   --font-sans: "Shippori Mincho", sans-serif;
   --font-serif: "Shippori Mincho", serif;
   --font-display: "Cinzel", serif;
   --font-body: "Shippori Mincho", serif;
+
+  /* アニメーション */
+  --animate-fade-in: fade-in 0.8s ease-out forwards;
+  --animate-slide-up: slide-up 0.8s ease-out forwards;
+  --animate-slide-down: slide-down 0.6s ease-out forwards;
+  --animate-scale-in: scale-in 0.6s ease-out forwards;
+  --animate-glow: glow 2s ease-in-out infinite;
+}
+
+/* キーフレーム */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-down {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes line-expand {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
 }
 
 /* 基本スタイル */
 :root {
   scrollbar-width: thin;
-  scrollbar-color: #333 #050505;
+  scrollbar-color: #333 #0a0a0a;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--color-monolith-bg);
-  color: var(--color-monolith-text);
+  background-color: var(--color-kg-bg);
+  color: var(--color-kg-text);
   font-family: var(--font-body);
-  antialiased: antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   line-height: 1.8;
   letter-spacing: 0.05em;
   overflow-x: hidden;
 }
 
 ::selection {
-  background-color: color-mix(in srgb, var(--color-monolith-accent), transparent 70%);
+  background-color: color-mix(in srgb, var(--color-kg-accent), transparent 60%);
   color: white;
+}
+
+/* グラデーションオーバーレイ */
+.gradient-overlay {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(10, 10, 10, 0.3) 50%,
+    rgba(10, 10, 10, 0.9) 100%
+  );
+}
+
+/* ガラス効果 */
+.glass {
+  background: rgba(20, 20, 20, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ホバーライン */
+.hover-line {
+  position: relative;
+}
+
+.hover-line::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--color-kg-accent);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-line:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ノイズテクスチャ */
+.bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.03;
 }

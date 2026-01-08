@@ -1,0 +1,113 @@
+---
+// src/pages/contact.astro - Contact Page
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionTitle from "../components/ui/SectionTitle";
+import ContactForm from "../components/ui/ContactForm";
+---
+
+<BaseLayout title="CONTACT" description="お問い合わせ">
+    <section class="pt-32 pb-16 md:pt-40 md:pb-24">
+        <SectionTitle client:visible title="CONTACT" subtitle="Get In Touch" />
+    </section>
+
+    <section class="pb-24 md:pb-32">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            <!-- Info -->
+            <div class="order-2 lg:order-1">
+                <h2
+                    class="font-display text-xl tracking-[0.2em] text-kg-text mb-6"
+                >
+                    LET'S CONNECT
+                </h2>
+                <p class="text-kg-text-muted font-serif mb-8 leading-relaxed">
+                    プロジェクトのご相談、コラボレーション、その他お問い合わせなど、お気軽にご連絡ください。
+                </p>
+
+                <div class="space-y-6">
+                    <!-- Email -->
+                    <div class="flex items-start gap-4">
+                        <div
+                            class="w-12 h-12 flex-shrink-0 border border-kg-border flex items-center justify-center text-kg-accent"
+                        >
+                            <span class="text-lg">✉</span>
+                        </div>
+                        <div>
+                            <h3
+                                class="font-display text-xs tracking-[0.2em] text-kg-text-muted mb-1"
+                            >
+                                EMAIL
+                            </h3>
+                            <a
+                                href="mailto:contact@keigoly.com"
+                                class="text-kg-text hover:text-kg-accent transition-colors font-serif"
+                            >
+                                contact@keigoly.com
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Response Time -->
+                    <div class="flex items-start gap-4">
+                        <div
+                            class="w-12 h-12 flex-shrink-0 border border-kg-border flex items-center justify-center text-kg-accent"
+                        >
+                            <span class="text-lg">⏱</span>
+                        </div>
+                        <div>
+                            <h3
+                                class="font-display text-xs tracking-[0.2em] text-kg-text-muted mb-1"
+                            >
+                                RESPONSE
+                            </h3>
+                            <p class="text-kg-text font-serif">
+                                通常1-3営業日以内
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Links -->
+                <div class="mt-12 pt-8 border-t border-kg-border">
+                    <h3
+                        class="font-display text-xs tracking-[0.2em] text-kg-text-muted mb-4"
+                    >
+                        FOLLOW
+                    </h3>
+                    <div class="flex gap-4">
+                        <a
+                            href="#"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="w-12 h-12 border border-kg-border flex items-center justify-center text-kg-text-muted hover:text-kg-accent hover:border-kg-accent transition-colors font-display text-xs"
+                        >
+                            X
+                        </a>
+                        <a
+                            href="#"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="w-12 h-12 border border-kg-border flex items-center justify-center text-kg-text-muted hover:text-kg-accent hover:border-kg-accent transition-colors font-display text-xs"
+                        >
+                            GH
+                        </a>
+                        <a
+                            href="#"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="w-12 h-12 border border-kg-border flex items-center justify-center text-kg-text-muted hover:text-kg-accent hover:border-kg-accent transition-colors font-display text-xs"
+                        >
+                            YT
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <div
+                class="order-1 lg:order-2 bg-kg-surface border border-kg-border p-8 md:p-10"
+            >
+                <ContactForm client:load />
+            </div>
+        </div>
+    </section>
+</BaseLayout>

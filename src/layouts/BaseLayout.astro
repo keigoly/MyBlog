@@ -1,43 +1,58 @@
 ---
 // src/layouts/BaseLayout.astro
-import { ClientRouter } from 'astro:transitions';
-import ScrollManager from '../components/core/ScrollManager';
-import CustomCursor from '../components/core/CustomCursor';
-import Opening from '../components/core/Opening'; // ★追加
-import '../styles/global.css';
+import { ClientRouter } from "astro:transitions";
+import ScrollManager from "../components/core/ScrollManager";
+import CustomCursor from "../components/core/CustomCursor";
+import Header from "../components/layout/Header";
+import Footer from "../components/layout/Footer";
+import "../styles/global.css";
 
 interface Props {
 	title: string;
 	description?: string;
+	showHeader?: boolean;
+	showFooter?: boolean;
+	fullWidth?: boolean;
 }
 
-const { title, description = "Reading is a ritual." } = Astro.props;
+const {
+	title,
+	description = "Creating Digital Experiences",
+	showHeader = true,
+	showFooter = true,
+	fullWidth = false,
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="ja" class="scroll-smooth">
-    <head>
+	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title} | MONOLITH</title>
+		<meta property="og:title" content={`${title} | KEIGOLY`} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		<title>{title} | KEIGOLY</title>
 		<ClientRouter />
 	</head>
-	<body class="min-h-screen flex flex-col relative bg-monolith-bg text-monolith-text cursor-none">
-        
-        <Opening client:only="react" /> <ScrollManager client:only="react" />
-        <CustomCursor client:only="react" />
+	<body
+		class="min-h-screen flex flex-col relative bg-kg-bg text-kg-text cursor-none"
+	>
+		<ScrollManager client:only="react" />
+		<CustomCursor client:only="react" />
 
-        <div class="fixed inset-0 z-[-1] pointer-events-none opacity-20 bg-noise"></div>
-        
-		<main class="flex-grow w-full max-w-4xl mx-auto px-6 py-12 md:py-24">
+		<!-- Noise Texture -->
+		<div class="fixed inset-0 z-[-1] pointer-events-none bg-noise"></div>
+
+		{showHeader && <Header client:load />}
+
+		<main class={`flex-grow ${fullWidth ? "" : "max-w-7xl mx-auto px-6"}`}>
 			<slot />
 		</main>
 
-        <footer class="py-8 text-center text-xs text-monolith-sub font-display tracking-widest opacity-60">
-            &copy; {new Date().getFullYear()} MONOLITH.
-        </footer>
+		{showFooter && <Footer client:load />}
 	</body>
 </html>
