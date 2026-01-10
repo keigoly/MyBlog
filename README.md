@@ -1,43 +1,51 @@
-# Astro Starter Kit: Minimal
+# KEIGOLY オフィシャルサイト
 
-```sh
-npm create astro@latest -- --template minimal
-```
+KEIGOLYのオフィシャルWebサイトです。
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 🌐 サイト概要
 
-## 🚀 Project Structure
+デジタル体験を創造するクリエイター「KEIGOLY」のポートフォリオサイトです。
 
-Inside of your Astro project, you'll see the following folders and files:
+### 主な機能
+
+- **ホーム**: 画像スライドショーによるインパクトのあるトップページ
+- **About**: プロフィール、活動概要、タイムライン（ブログ連携）
+- **Works**: 開発プロジェクトの紹介
+- **Blog**: 技術記事やお知らせの発信
+- **Contact**: お問い合わせフォーム
+
+## 🛠️ 技術スタック
+
+- **フレームワーク**: Astro
+- **スタイリング**: Tailwind CSS
+- **アニメーション**: Framer Motion
+- **言語**: TypeScript, React
+
+## 🚀 開発コマンド
+
+プロジェクトルートで以下のコマンドを実行できます：
+
+| コマンド               | 説明                                    |
+| :--------------------- | :-------------------------------------- |
+| `npm install`          | 依存関係をインストール                  |
+| `npm run dev`          | 開発サーバーを起動 (`localhost:4321`)   |
+| `npm run build`        | 本番環境用にビルド (`./dist/`)          |
+| `npm run preview`      | ビルド結果をローカルでプレビュー        |
+
+## 📁 プロジェクト構成
 
 ```text
 /
-├── public/
+├── public/           # 静的ファイル（画像、フォントなど）
 ├── src/
-│   └── pages/
-│       └── index.astro
+│   ├── components/   # UIコンポーネント
+│   ├── content/      # ブログ・Works記事（MDX）
+│   ├── layouts/      # ページレイアウト
+│   ├── pages/        # ページファイル
+│   └── styles/       # グローバルスタイル
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 📝 ライセンス
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+© 2026 KEIGOLY. All Rights Reserved.

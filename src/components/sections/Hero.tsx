@@ -1,5 +1,7 @@
+
 // src/components/sections/Hero.tsx
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface HeroProps {
     title?: string;
@@ -7,69 +9,51 @@ interface HeroProps {
     showScroll?: boolean;
 }
 
+const heroImages = [
+    '/images/hero/hero-1.jpg', // User uploaded image
+    '/images/hero/hero-2.png',
+    '/images/hero/hero-3.png',
+    '/images/hero/hero-4.png',
+];
+
 export default function Hero({
     title = "KEIGOLY",
     subtitle = "Creating Digital Experiences",
     showScroll = true
 }: HeroProps) {
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrentIndex((prev) => (prev + 1) % heroImages.length);
+        }, 5000);
+        return () => clearInterval(timer);
+    }, []);
+
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-            {/* Background Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-b from-kg-bg via-kg-bg to-kg-bg-alt" />
-
-            {/* Animated Orbs */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-kg-bg">
+            {/* Background Slideshow */}
+            <AnimatePresence mode="popLayout">
                 <motion.div
-                    animate={{
-                        x: [0, 100, 0],
-                        y: [0, -50, 0],
-                        scale: [1, 1.2, 1],
-                    }}
-                    transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-                    className="absolute -top-1/4 -left-1/4 w-1/2 h-1/2 bg-kg-accent/5 rounded-full blur-[100px]"
-                />
-                <motion.div
-                    animate={{
-                        x: [0, -80, 0],
-                        y: [0, 80, 0],
-                        scale: [1, 1.3, 1],
-                    }}
-                    transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
-                    className="absolute -bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-kg-accent/5 rounded-full blur-[100px]"
-                />
-            </div>
-
-            {/* Content */}
-            <div className="relative z-10 text-center px-6">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, delay: 0.5 }}
+                    key={currentIndex}
+                    className="absolute inset-0 z-0"
+                    initial={{ opacity: 0, scale: 1.1 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 1.5, ease: "easeInOut" }}
                 >
-                    <h1 className="font-display text-6xl md:text-8xl lg:text-9xl tracking-[0.4em] text-kg-text pl-4">
-                        {title}
-                    </h1>
+                    <img
+                        src={heroImages[currentIndex]}
+                        alt={`Hero Background ${currentIndex + 1}`}
+                        className="w-full h-full object-cover opacity-60" // 画像の明るさを少し落とす
+                    />
+                    {/* Dark Overlay for Text Readability */}
+                    <div className="absolute inset-0 bg-black/40 mix-blend-multiply" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-kg-bg" />
                 </motion.div>
+            </AnimatePresence>
 
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 1, delay: 1 }}
-                    className="mt-8"
-                >
-                    <p className="text-sm md:text-base text-kg-text-muted font-serif tracking-[0.3em]">
-                        {subtitle}
-                    </p>
-                </motion.div>
 
-                {/* Decorative Line */}
-                <motion.div
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: 1 }}
-                    transition={{ duration: 1.2, delay: 1.2 }}
-                    className="mt-12 mx-auto w-px h-24 bg-gradient-to-b from-kg-accent to-transparent"
-                />
-            </div>
 
             {/* Scroll Indicator */}
             {showScroll && (
@@ -77,15 +61,15 @@ export default function Hero({
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 2 }}
-                    className="absolute bottom-12 left-1/2 -translate-x-1/2"
+                    className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20"
                 >
                     <motion.div
                         animate={{ y: [0, 10, 0] }}
                         transition={{ duration: 2, repeat: Infinity }}
                         className="flex flex-col items-center gap-2"
                     >
-                        <span className="text-xs font-display tracking-[0.3em] text-kg-text-muted">SCROLL</span>
-                        <div className="w-px h-8 bg-gradient-to-b from-kg-text-muted to-transparent" />
+                        <span className="text-xs font-display tracking-[0.3em] text-kg-text/80">SCROLL</span>
+                        <div className="w-px h-12 bg-gradient-to-b from-kg-accent to-transparent" />
                     </motion.div>
                 </motion.div>
             )}

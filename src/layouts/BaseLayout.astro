@@ -2,7 +2,6 @@
 // src/layouts/BaseLayout.astro
 import { ClientRouter } from "astro:transitions";
 import ScrollManager from "../components/core/ScrollManager";
-import CustomCursor from "../components/core/CustomCursor";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 import "../styles/global.css";
@@ -38,11 +37,8 @@ const {
 		<title>{title} | KEIGOLY</title>
 		<ClientRouter />
 	</head>
-	<body
-		class="min-h-screen flex flex-col relative bg-kg-bg text-kg-text cursor-none"
-	>
+	<body class="min-h-screen flex flex-col relative bg-kg-bg text-kg-text">
 		<ScrollManager client:only="react" />
-		<CustomCursor client:only="react" />
 
 		<!-- Noise Texture -->
 		<div class="fixed inset-0 z-[-1] pointer-events-none bg-noise"></div>

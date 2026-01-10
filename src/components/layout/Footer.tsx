@@ -1,11 +1,5 @@
 // src/components/layout/Footer.tsx
-import { motion } from 'framer-motion';
-
-const socialLinks = [
-    { name: 'X', href: '#', icon: 'X' },
-    { name: 'GitHub', href: '#', icon: 'GH' },
-    { name: 'YouTube', href: '#', icon: 'YT' },
-];
+import { useState } from 'react';
 
 const footerLinks = [
     { name: 'TOP', href: '/' },
@@ -15,64 +9,99 @@ const footerLinks = [
     { name: 'CONTACT', href: '/contact' },
 ];
 
+const socialLinks = [
+    {
+        name: 'X',
+        href: '#',
+        icon: (
+            <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
+        )
+    },
+    {
+        name: 'YouTube',
+        href: '#',
+        icon: (
+            <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+            </svg>
+        )
+    },
+];
+
 export default function Footer() {
+    const [currentLang, setCurrentLang] = useState<'JP' | 'EN'>('JP');
+
     return (
-        <footer className="relative bg-kg-bg-alt border-t border-kg-border">
-            {/* Decorative Line */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-px bg-gradient-to-r from-transparent via-kg-accent to-transparent" />
+        <footer className="relative bg-kg-bg border-t border-kg-border/30">
+            <div className="w-full px-6 lg:px-10 py-12">
+                {/* Logo - 大きく左寄せ */}
+                <div className="mb-8">
+                    <a href="/" className="inline-block hover:opacity-80 transition-opacity duration-300">
+                        <img src="/logo.png" alt="KEIGOLY" className="h-10 lg:h-12" />
+                    </a>
+                </div>
 
-            <div className="max-w-7xl mx-auto px-6 py-16">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
-                    {/* Brand */}
-                    <div className="text-center md:text-left">
-                        <a
-                            href="/"
-                            className="inline-block font-display text-3xl tracking-[0.3em] text-kg-text hover:text-kg-accent transition-colors duration-300"
-                        >
-                            KEIGOLY
-                        </a>
-                        <p className="mt-4 text-sm text-kg-text-muted font-serif">
-                            Creating Digital Experiences
-                        </p>
-                    </div>
-
-                    {/* Navigation */}
-                    <nav className="flex flex-wrap justify-center gap-6">
-                        {footerLinks.map((link) => (
-                            <a
-                                key={link.name}
-                                href={link.href}
-                                className="font-display text-xs tracking-[0.2em] text-kg-text-muted hover:text-kg-accent transition-colors duration-300"
-                            >
-                                {link.name}
-                            </a>
+                {/* Navigation Row */}
+                <div className="flex flex-wrap items-center gap-y-4">
+                    {/* Navigation Links */}
+                    <nav className="flex flex-wrap items-center">
+                        {footerLinks.map((link, index) => (
+                            <div key={link.name} className="flex items-center">
+                                <a
+                                    href={link.href}
+                                    className="font-sans text-xs tracking-[0.15em] text-kg-text-muted hover:text-kg-text transition-colors duration-300 uppercase"
+                                >
+                                    {link.name}
+                                </a>
+                                {index < footerLinks.length - 1 && (
+                                    <span className="text-kg-text-muted/50 mx-4 text-xs hidden sm:inline">·</span>
+                                )}
+                            </div>
                         ))}
                     </nav>
 
                     {/* Social Links */}
-                    <div className="flex justify-center md:justify-end gap-6">
+                    <div className="flex items-center gap-4 ml-0 sm:ml-6">
                         {socialLinks.map((social) => (
-                            <motion.a
+                            <a
                                 key={social.name}
                                 href={social.href}
-                                whileHover={{ scale: 1.1 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="w-10 h-10 flex items-center justify-center border border-kg-border rounded-full text-kg-text-muted hover:text-kg-accent hover:border-kg-accent transition-colors duration-300 font-display text-xs"
+                                className="text-kg-text-muted hover:text-kg-text transition-colors duration-300"
                                 aria-label={social.name}
                             >
                                 {social.icon}
-                            </motion.a>
+                            </a>
                         ))}
+                    </div>
+
+                    {/* Language Switcher */}
+                    <div className="flex items-center gap-2 ml-0 sm:ml-6 text-xs tracking-wider">
+                        <button
+                            onClick={() => setCurrentLang('JP')}
+                            className={`transition-colors duration-300 ${currentLang === 'JP' ? 'text-kg-text' : 'text-kg-text-muted hover:text-kg-text'}`}
+                        >
+                            JP
+                        </button>
+                        <span className="text-kg-text-muted/50">/</span>
+                        <button
+                            onClick={() => setCurrentLang('EN')}
+                            className={`transition-colors duration-300 ${currentLang === 'EN' ? 'text-kg-text' : 'text-kg-text-muted hover:text-kg-text'}`}
+                        >
+                            EN
+                        </button>
                     </div>
                 </div>
 
                 {/* Copyright */}
-                <div className="mt-12 pt-8 border-t border-kg-border/50 text-center">
-                    <p className="text-xs text-kg-text-muted font-display tracking-widest">
-                        &copy; {new Date().getFullYear()} KEIGOLY. All Rights Reserved.
+                <div className="mt-8 pt-6 border-t border-kg-border/20">
+                    <p className="text-xs text-kg-text-muted/60 tracking-wider">
+                        &copy; {new Date().getFullYear()} KEIGOLY
                     </p>
                 </div>
             </div>
         </footer>
     );
 }
+
