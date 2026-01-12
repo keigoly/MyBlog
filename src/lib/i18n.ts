@@ -127,9 +127,11 @@ export const translations = {
 // 翻訳テキストを取得するヘルパー関数
 export function t<
     T extends keyof typeof translations,
-    K extends keyof typeof translations[T]
+    K extends keyof (typeof translations)[T]
 >(section: T, key: K, lang: Language): string {
-    return translations[section][key][lang];
+    const sectionData = translations[section];
+    const keyData = sectionData[key] as { ja: string; en: string };
+    return keyData[lang];
 }
 
 // URLから言語を判定

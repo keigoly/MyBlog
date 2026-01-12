@@ -10,10 +10,9 @@ interface HeroProps {
 }
 
 const heroImages = [
-    '/images/hero/hero-1.jpg', // User uploaded image
-    '/images/hero/hero-2.png',
-    '/images/hero/hero-3.png',
-    '/images/hero/hero-4.png',
+    '/images/hero/slide-1.png',
+    '/images/hero/slide-2.jpg',
+    '/images/hero/slide-3.jpg',
 ];
 
 export default function Hero({
