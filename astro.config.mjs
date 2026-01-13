@@ -6,7 +6,7 @@ import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://monolith-blog.vercel.app',
+  site: 'https://keigoly.jp',
 
   integrations: [
     react(),
