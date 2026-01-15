@@ -10,6 +10,9 @@ const OAUTH_AUTHORIZE_PATH = '/login/oauth/authorize';
 const OAUTH_TOKEN_PATH = '/login/oauth/access_token';
 const OAUTH_SCOPES = 'repo,user';
 
+// 許可されたGitHubユーザー名のリスト
+const ALLOWED_USERS = ['keigoly'];
+
 export default {
     async fetch(request, env) {
         const url = new URL(request.url);
@@ -70,6 +73,44 @@ export default {
                     return new Response(`OAuth Error: ${tokenData.error_description || tokenData.error}`, {
                         status: 400,
                         headers: corsHeaders,
+                    });
+                }
+
+                // ユーザー情報を取得してアクセス制限をチェック
+                const userResponse = await fetch('https://api.github.com/user', {
+                    headers: {
+                        'Authorization': `Bearer ${tokenData.access_token}`,
+                        'User-Agent': 'Decap-CMS-OAuth-Worker',
+                        'Accept': 'application/json',
+                    },
+                });
+
+                const userData = await userResponse.json();
+                const username = userData.login;
+
+                // 許可リストにないユーザーは拒否
+                if (!ALLOWED_USERS.includes(username)) {
+                    return new Response(`
+                        <html>
+                            <head>
+                                <title>アクセス拒否</title>
+                                <style>
+                                    body { font-family: sans-serif; text-align: center; padding: 50px; background: #1a1a2e; color: #fff; }
+                                    h1 { color: #ff6b6b; }
+                                </style>
+                            </head>
+                            <body>
+                                <h1>⛔ アクセス拒否</h1>
+                                <p>このCMSは管理者専用です。</p>
+                                <p>ユーザー「${username}」はアクセスが許可されていません。</p>
+                            </body>
+                        </html>
+                    `, {
+                        status: 403,
+                        headers: {
+                            'Content-Type': 'text/html; charset=utf-8',
+                            ...corsHeaders,
+                        },
                     });
                 }
 
