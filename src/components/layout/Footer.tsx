@@ -7,6 +7,7 @@ const footerLinks = [
     { name: 'WORKS', href: '/works' },
     { name: 'BLOG', href: '/blog' },
     { name: 'CONTACT', href: '/contact' },
+    { name: '特定商取引法に基づく表記', href: '/tokushoho' },
 ];
 
 const socialLinks = [
