@@ -1,0 +1,141 @@
+---
+// src/pages/privacy.astro - プライバシーポリシー
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionTitle from "../components/ui/SectionTitle";
+---
+
+<BaseLayout
+    title="プライバシーポリシー"
+    description="プライバシーポリシー - KEIGOLY"
+>
+    <section class="pt-32 pb-16 md:pt-40 md:pb-24">
+        <SectionTitle client:visible title="PRIVACY POLICY" />
+    </section>
+
+    <section class="pb-16 md:pb-24">
+        <div class="max-w-3xl mx-auto">
+            <h2
+                class="font-serif text-xl md:text-2xl text-kg-text mb-12 text-center"
+            >
+                プライバシーポリシー
+            </h2>
+
+            <p class="text-kg-text-muted font-serif mb-10 leading-relaxed">
+                KEIGOLY（以下「当方」といいます）は、お客様の個人情報の保護を重要と考え、以下のとおりプライバシーポリシーを定めます。
+            </p>
+
+            <div class="space-y-8">
+                <div class="border-b border-kg-border/30 pb-6">
+                    <h3
+                        class="font-serif text-sm tracking-widest text-kg-accent mb-3"
+                    >
+                        1. 収集する情報
+                    </h3>
+                    <p class="text-kg-text font-serif leading-relaxed mb-3">
+                        当方は、以下の情報を収集することがあります。
+                    </p>
+                    <ul
+                        class="text-kg-text font-serif space-y-2 list-disc list-inside"
+                    >
+                        <li>お名前、メールアドレス（お問い合わせフォームご利用時）</li>
+                        <li>決済に関する情報（Stripeを通じて処理され、当方がクレジットカード情報を直接保持することはありません）</li>
+                        <li>ウェブサイトのアクセスログ（IPアドレス、ブラウザ情報等）</li>
+                    </ul>
+                </div>
+
+                <div class="border-b border-kg-border/30 pb-6">
+                    <h3
+                        class="font-serif text-sm tracking-widest text-kg-accent mb-3"
+                    >
+                        2. 情報の利用目的
+                    </h3>
+                    <p class="text-kg-text font-serif leading-relaxed mb-3">
+                        収集した情報は、以下の目的で利用いたします。
+                    </p>
+                    <ul
+                        class="text-kg-text font-serif space-y-2 list-disc list-inside"
+                    >
+                        <li>お問い合わせへの対応</li>
+                        <li>商品・サービスの提供および改善</li>
+                        <li>決済処理</li>
+                        <li>サービスに関する重要なお知らせの送付</li>
+                    </ul>
+                </div>
+
+                <div class="border-b border-kg-border/30 pb-6">
+                    <h3
+                        class="font-serif text-sm tracking-widest text-kg-accent mb-3"
+                    >
+                        3. 第三者への提供
+                    </h3>
+                    <p class="text-kg-text font-serif leading-relaxed">
+                        当方は、法令に基づく場合を除き、お客様の同意なく個人情報を第三者に提供することはありません。ただし、決済処理においてはStripe, Inc.がお客様の決済情報を処理します。Stripeのプライバシーポリシーについては、<a href="https://stripe.com/jp/privacy" target="_blank" rel="noopener noreferrer" class="text-kg-accent hover:text-kg-accent-hover transition-colors">Stripeプライバシーポリシー</a>をご参照ください。
+                    </p>
+                </div>
+
+                <div class="border-b border-kg-border/30 pb-6">
+                    <h3
+                        class="font-serif text-sm tracking-widest text-kg-accent mb-3"
+                    >
+                        4. 情報の管理
+                    </h3>
+                    <p class="text-kg-text font-serif leading-relaxed">
+                        当方は、お客様の個人情報の正確性を保ち、不正アクセス・紛失・破損・改ざん・漏洩などを防止するため、適切なセキュリティ対策を講じます。
+                    </p>
+                </div>
+
+                <div class="border-b border-kg-border/30 pb-6">
+                    <h3
+                        class="font-serif text-sm tracking-widest text-kg-accent mb-3"
+                    >
+                        5. お客様の権利
+                    </h3>
+                    <p class="text-kg-text font-serif leading-relaxed">
+                        お客様は、当方が保有するご自身の個人情報について、開示・訂正・削除を請求することができます。ご希望の場合は、お問い合わせフォームまたはメール（mail@keigoly.jp）よりご連絡ください。
+                    </p>
+                </div>
+
+                <div class="border-b border-kg-border/30 pb-6">
+                    <h3
+                        class="font-serif text-sm tracking-widest text-kg-accent mb-3"
+                    >
+                        6. Cookieについて
+                    </h3>
+                    <p class="text-kg-text font-serif leading-relaxed">
+                        当ウェブサイトでは、サービスの利便性向上のためにCookieを使用する場合があります。お客様はブラウザの設定によりCookieの受け入れを拒否することができますが、一部の機能がご利用いただけなくなる場合があります。
+                    </p>
+                </div>
+
+                <div class="pb-6">
+                    <h3
+                        class="font-serif text-sm tracking-widest text-kg-accent mb-3"
+                    >
+                        7. ポリシーの変更
+                    </h3>
+                    <p class="text-kg-text font-serif leading-relaxed">
+                        当方は、必要に応じて本プライバシーポリシーを変更することがあります。変更後のポリシーは、本ページに掲載した時点から効力を生じるものとします。
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-10 pt-6 border-t border-kg-border/30">
+                <p class="text-kg-text-muted font-serif text-sm">
+                    制定日：2026年2月12日
+                </p>
+            </div>
+
+            <!-- Contact CTA -->
+            <div class="mt-16 pt-8 border-t border-kg-border text-center">
+                <p class="text-kg-text-muted font-serif mb-6">
+                    プライバシーポリシーに関するご質問は、お気軽にお問い合わせください。
+                </p>
+                <a
+                    href="/contact"
+                    class="inline-block px-10 py-4 border border-kg-accent text-kg-accent font-display text-sm tracking-[0.2em] hover:bg-kg-accent hover:text-kg-bg transition-all duration-300"
+                >
+                    CONTACT
+                </a>
+            </div>
+        </div>
+    </section>
+</BaseLayout>
