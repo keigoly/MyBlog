@@ -6,7 +6,7 @@ import SectionTitle from "../components/ui/SectionTitle";
 
 <BaseLayout
     title="特定商取引法に基づく表記"
-    description="特定商取引法に基づく表記 - KEIGOLY"
+    description="特定商取引法に基づく表記（通信販売に関する表示事項） - KEIGOLY"
 >
     <section class="pt-32 pb-16 md:pt-40 md:pb-24">
         <SectionTitle client:visible title="LEGAL" />
@@ -21,46 +21,56 @@ import SectionTitle from "../components/ui/SectionTitle";
             </h2>
 
             <div class="space-y-8">
+                <!-- 法人名 / 販売業者名 -->
                 <div class="border-b border-kg-border/30 pb-6">
                     <h3
                         class="font-serif text-sm tracking-widest text-kg-accent mb-3"
                     >
-                        販売業者
+                        販売業者（法人名/屋号）
                     </h3>
                     <p class="text-kg-text font-serif">KEIGOLY</p>
+                    <p class="text-kg-text-muted font-serif text-sm mt-1">
+                        ※個人事業主のため、正式な氏名は請求があった場合に遅滞なく開示いたします。
+                    </p>
                 </div>
 
+                <!-- 運営責任者 -->
                 <div class="border-b border-kg-border/30 pb-6">
                     <h3
                         class="font-serif text-sm tracking-widest text-kg-accent mb-3"
                     >
                         運営責任者
                     </h3>
-                    <p class="text-kg-text font-serif">KEIGOLY 代表</p>
+                    <p class="text-kg-text font-serif">
+                        請求があった場合に遅滞なく開示いたします。
+                    </p>
                 </div>
 
+                <!-- 住所 / 所在地 -->
                 <div class="border-b border-kg-border/30 pb-6">
                     <h3
                         class="font-serif text-sm tracking-widest text-kg-accent mb-3"
                     >
-                        所在地
+                        所在地（事業所の住所）
                     </h3>
-                    <p class="text-kg-text-muted font-serif">
-                        請求があったら遅滞なく開示いたします。
+                    <p class="text-kg-text font-serif">
+                        請求があった場合には速やかに開示いたします。
                     </p>
                 </div>
 
+                <!-- 電話番号 -->
                 <div class="border-b border-kg-border/30 pb-6">
                     <h3
                         class="font-serif text-sm tracking-widest text-kg-accent mb-3"
                     >
                         電話番号
                     </h3>
-                    <p class="text-kg-text-muted font-serif">
-                        請求があったら遅滞なく開示いたします。
+                    <p class="text-kg-text font-serif">
+                        請求があった場合には速やかに開示いたします。
                     </p>
                 </div>
 
+                <!-- メールアドレス -->
                 <div class="border-b border-kg-border/30 pb-6">
                     <h3
                         class="font-serif text-sm tracking-widest text-kg-accent mb-3"
@@ -70,6 +80,7 @@ import SectionTitle from "../components/ui/SectionTitle";
                     <p class="text-kg-text font-serif">mail@keigoly.jp</p>
                 </div>
 
+                <!-- 販売URL -->
                 <div class="border-b border-kg-border/30 pb-6">
                     <h3
                         class="font-serif text-sm tracking-widest text-kg-accent mb-3"
@@ -85,6 +96,7 @@ import SectionTitle from "../components/ui/SectionTitle";
                     </p>
                 </div>
 
+                <!-- 販売商品 -->
                 <div class="border-b border-kg-border/30 pb-6">
                     <h3
                         class="font-serif text-sm tracking-widest text-kg-accent mb-3"
@@ -101,6 +113,7 @@ import SectionTitle from "../components/ui/SectionTitle";
                     </ul>
                 </div>
 
+                <!-- 価格（消費税込み） -->
                 <div class="border-b border-kg-border/30 pb-6">
                     <h3
                         class="font-serif text-sm tracking-widest text-kg-accent mb-3"
@@ -108,54 +121,58 @@ import SectionTitle from "../components/ui/SectionTitle";
                         販売価格
                     </h3>
                     <p class="text-kg-text font-serif">
-                        各商品・サービスページに記載の価格に準じます。
+                        各商品・サービスページに記載の金額（消費税込み）
                     </p>
                 </div>
 
+                <!-- 追加手数料 -->
                 <div class="border-b border-kg-border/30 pb-6">
                     <h3
                         class="font-serif text-sm tracking-widest text-kg-accent mb-3"
                     >
-                        商品代金以外の必要料金
+                        商品代金以外の必要料金（追加手数料）
                     </h3>
                     <p class="text-kg-text font-serif">
-                        なし（消費税は販売価格に含まれます）
+                        なし（消費税は販売価格に含まれます。インターネット接続に必要な通信料はお客様のご負担となります。）
                     </p>
                 </div>
 
+                <!-- 利用可能な決済手段 -->
                 <div class="border-b border-kg-border/30 pb-6">
                     <h3
                         class="font-serif text-sm tracking-widest text-kg-accent mb-3"
                     >
-                        お支払い方法
+                        お支払い方法（利用可能な決済手段）
                     </h3>
                     <p class="text-kg-text font-serif">
-                        クレジットカード決済（Stripe）
+                        クレジットカード決済（Stripe経由）
                     </p>
                 </div>
 
+                <!-- 決済期間 -->
                 <div class="border-b border-kg-border/30 pb-6">
                     <h3
                         class="font-serif text-sm tracking-widest text-kg-accent mb-3"
                     >
-                        お支払い時期
+                        決済期間（お支払い時期）
                     </h3>
                     <p class="text-kg-text font-serif">
-                        商品注文時にお支払いが確定します。
+                        クレジットカード決済はご注文時にただちに処理されます。
                     </p>
                 </div>
 
+                <!-- 配達時間 / 商品の引渡し時期 -->
                 <div class="border-b border-kg-border/30 pb-6">
                     <h3
                         class="font-serif text-sm tracking-widest text-kg-accent mb-3"
                     >
-                        商品の引渡し時期
+                        商品の引渡し時期（配達時間）
                     </h3>
                     <ul
                         class="text-kg-text font-serif space-y-2 list-disc list-inside"
                     >
                         <li>
-                            デジタルコンテンツ・Chrome拡張機能：決済完了後、即時提供
+                            デジタルコンテンツ・Chrome拡張機能：決済完了後、即時提供（ダウンロードまたはアクセス権付与）
                         </li>
                         <li>
                             ソフトウェア開発サービス：別途ご相談の上、納期を決定いたします
@@ -163,42 +180,52 @@ import SectionTitle from "../components/ui/SectionTitle";
                     </ul>
                 </div>
 
+                <!-- 交換および返品に関するポリシー（不良品/非不良品を明確に分離） -->
                 <div class="border-b border-kg-border/30 pb-6">
                     <h3
                         class="font-serif text-sm tracking-widest text-kg-accent mb-3"
                     >
-                        返品・キャンセルについて
+                        交換および返品に関するポリシー
                     </h3>
-                    <ul
-                        class="text-kg-text font-serif space-y-2 list-disc list-inside"
-                    >
-                        <li>
-                            デジタルコンテンツ・Chrome拡張機能：商品の性質上、購入後の返品・返金は原則としてお受けしておりません。ただし、商品に重大な不具合がある場合はご連絡ください。
-                        </li>
-                        <li>
-                            ソフトウェア開発サービス：着手前のキャンセルは全額返金いたします。着手後のキャンセルについては、進捗状況に応じてご相談させていただきます。
-                        </li>
-                    </ul>
+
+                    <div class="space-y-6">
+                        <!-- 不良品の場合 -->
+                        <div>
+                            <h4 class="font-serif text-kg-text font-medium mb-2">
+                                【不良品（商品に不具合がある場合）の対応】
+                            </h4>
+                            <ul
+                                class="text-kg-text font-serif space-y-2 list-disc list-inside"
+                            >
+                                <li>
+                                    デジタルコンテンツ・Chrome拡張機能：商品に重大な不具合・欠陥がある場合は、購入後14日以内にメール（mail@keigoly.jp）または<a href="/contact" class="text-kg-accent hover:text-kg-accent-hover transition-colors">お問い合わせフォーム</a>よりご連絡ください。不具合の内容を確認の上、修正版の提供または全額返金にて対応いたします。
+                                </li>
+                                <li>
+                                    ソフトウェア開発サービス：納品物に仕様と異なる不具合がある場合は、納品後14日以内にご連絡ください。無償にて修正対応いたします。修正が困難な場合は、進捗状況に応じて返金額をご相談の上決定いたします。
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- 非不良品の場合 -->
+                        <div>
+                            <h4 class="font-serif text-kg-text font-medium mb-2">
+                                【通常品（不具合のない商品）の対応】
+                            </h4>
+                            <ul
+                                class="text-kg-text font-serif space-y-2 list-disc list-inside"
+                            >
+                                <li>
+                                    デジタルコンテンツ・Chrome拡張機能：デジタル商品の性質上、購入後の返品・返金・交換はお受けしておりません。ご購入前に商品説明・動作環境等を十分にご確認ください。
+                                </li>
+                                <li>
+                                    ソフトウェア開発サービス：着手前のキャンセルは全額返金いたします。着手後のキャンセルについては、作業の進捗状況に応じてご相談の上、返金額を決定いたします。
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="border-b border-kg-border/30 pb-6">
-                    <h3
-                        class="font-serif text-sm tracking-widest text-kg-accent mb-3"
-                    >
-                        返金ポリシー
-                    </h3>
-                    <ul
-                        class="text-kg-text font-serif space-y-2 list-disc list-inside"
-                    >
-                        <li>
-                            デジタルコンテンツ・Chrome拡張機能：商品の性質上、購入後の返金は原則としてお受けしておりません。ただし、商品に重大な不具合がある場合は、購入後14日以内にご連絡いただければ返金対応いたします。
-                        </li>
-                        <li>
-                            ソフトウェア開発サービス：着手前のキャンセルは全額返金いたします。着手後については、進捗状況に応じてご相談の上、返金額を決定いたします。
-                        </li>
-                    </ul>
-                </div>
-
+                <!-- 不審請求の申請について -->
                 <div class="border-b border-kg-border/30 pb-6">
                     <h3
                         class="font-serif text-sm tracking-widest text-kg-accent mb-3"
@@ -210,6 +237,7 @@ import SectionTitle from "../components/ui/SectionTitle";
                     </p>
                 </div>
 
+                <!-- 動作環境（オプション） -->
                 <div class="pb-6">
                     <h3
                         class="font-serif text-sm tracking-widest text-kg-accent mb-3"
