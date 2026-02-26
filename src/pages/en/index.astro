@@ -16,44 +16,6 @@ const latestPosts = allPosts
     <!-- Hero Section -->
     <Hero client:load />
 
-    <!-- Works Section -->
-    <section class="py-24 md:py-32 px-6 max-w-7xl mx-auto">
-        <SectionTitle client:visible title="WORKS" subtitle="What I Do" />
-
-        <div class="text-center py-12">
-            <p class="font-serif text-kg-text-muted mb-8 max-w-lg mx-auto">
-                Working as a System Engineer at Palo Alto Networks while
-                developing Chrome extensions.
-            </p>
-            <a
-                href="/en/works"
-                class="inline-flex items-center gap-2 font-display text-sm tracking-[0.2em] text-kg-text-muted hover:text-kg-accent transition-colors duration-300"
-            >
-                VIEW DETAILS
-                <span class="text-lg">→</span>
-            </a>
-        </div>
-    </section>
-
-    <!-- Apps Section -->
-    <section class="py-24 md:py-32 px-6 max-w-7xl mx-auto bg-kg-bg-alt">
-        <SectionTitle client:visible title="APPS" subtitle="Chrome Extensions" />
-
-        <div class="text-center py-12">
-            <p class="font-serif text-kg-text-muted mb-8 max-w-lg mx-auto">
-                I develop and publish Chrome extensions aimed at improving user productivity
-                and enhancing the browsing experience.
-            </p>
-            <a
-                href="/en/apps"
-                class="inline-flex items-center gap-2 font-display text-sm tracking-[0.2em] text-kg-text-muted hover:text-kg-accent transition-colors duration-300"
-            >
-                VIEW ALL APPS
-                <span class="text-lg">&rarr;</span>
-            </a>
-        </div>
-    </section>
-
     <!-- Blog Section -->
     <section class="py-24 md:py-32 px-6 max-w-7xl mx-auto">
         <SectionTitle client:visible title="BLOG" subtitle="Latest Articles" />
@@ -101,6 +63,44 @@ const latestPosts = allPosts
             >
                 VIEW ALL ARTICLES
                 <span class="text-lg">→</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Works Section -->
+    <section class="py-24 md:py-32 px-6 max-w-7xl mx-auto bg-kg-bg-alt">
+        <SectionTitle client:visible title="WORKS" subtitle="What I Do" />
+
+        <div class="text-center py-12">
+            <p class="font-serif text-kg-text-muted mb-8 max-w-lg mx-auto">
+                Working as a System Engineer at Palo Alto Networks while
+                developing Chrome extensions.
+            </p>
+            <a
+                href="/en/works"
+                class="inline-flex items-center gap-2 font-display text-sm tracking-[0.2em] text-kg-text-muted hover:text-kg-accent transition-colors duration-300"
+            >
+                VIEW DETAILS
+                <span class="text-lg">→</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Apps Section -->
+    <section class="py-24 md:py-32 px-6 max-w-7xl mx-auto">
+        <SectionTitle client:visible title="APPS" subtitle="Chrome Extensions" />
+
+        <div class="text-center py-12">
+            <p class="font-serif text-kg-text-muted mb-8 max-w-lg mx-auto">
+                I develop and publish Chrome extensions aimed at improving user productivity
+                and enhancing the browsing experience.
+            </p>
+            <a
+                href="/en/apps"
+                class="inline-flex items-center gap-2 font-display text-sm tracking-[0.2em] text-kg-text-muted hover:text-kg-accent transition-colors duration-300"
+            >
+                VIEW ALL APPS
+                <span class="text-lg">&rarr;</span>
             </a>
         </div>
     </section>
