@@ -35,8 +35,27 @@ const latestPosts = allPosts
         </div>
     </section>
 
-    <!-- Blog Section -->
+    <!-- Apps Section -->
     <section class="py-24 md:py-32 px-6 max-w-7xl mx-auto bg-kg-bg-alt">
+        <SectionTitle client:visible title="APPS" subtitle="Chrome Extensions" />
+
+        <div class="text-center py-12">
+            <p class="font-serif text-kg-text-muted mb-8 max-w-lg mx-auto">
+                I develop and publish Chrome extensions aimed at improving user productivity
+                and enhancing the browsing experience.
+            </p>
+            <a
+                href="/en/apps"
+                class="inline-flex items-center gap-2 font-display text-sm tracking-[0.2em] text-kg-text-muted hover:text-kg-accent transition-colors duration-300"
+            >
+                VIEW ALL APPS
+                <span class="text-lg">&rarr;</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="py-24 md:py-32 px-6 max-w-7xl mx-auto">
         <SectionTitle client:visible title="BLOG" subtitle="Latest Articles" />
 
         <div class="space-y-8 max-w-3xl mx-auto">

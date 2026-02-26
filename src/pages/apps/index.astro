@@ -1,0 +1,193 @@
+---
+// src/pages/apps/index.astro - APPS Page (Chrome Extensions Showcase)
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionTitle from "../../components/ui/SectionTitle";
+import ExtensionCard from "../../components/ui/ExtensionCard";
+
+const extensions = [
+    {
+        name: "リアタイ！",
+        description:
+            "実況のお供に。サイドパネルでリアルタイム検索を常駐表示。自動更新・NGフィルター機能搭載。",
+        url: "https://chromewebstore.google.com/detail/%E3%83%AA%E3%82%A2%E3%82%BF%E3%82%A4%EF%BC%81/indeiidgljnaokghbdogclapjjngmnkb",
+        iconType: "realtime" as const,
+    },
+    {
+        name: "radikoかんたん予約スケジューラー",
+        description:
+            "番組表を作って自動で切り替え・自動再生。毎日のラジオ聴取を自動化し、聞き逃しを防ぎます。",
+        url: "https://chromewebstore.google.com/detail/radiko%E3%81%8B%E3%82%93%E3%81%9F%E3%82%93%E4%BA%88%E7%B4%84%E3%82%B9%E3%82%B1%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%A9%E3%83%BC/nolggejdjkibdokfheilodifknlifipk",
+        iconType: "radio" as const,
+    },
+    {
+        name: "GemAvatar",
+        description:
+            "Google Geminiのユーザーアバターをカスタマイズ。Gemごとに異なるアイコンを設定可能。",
+        url: "https://chromewebstore.google.com/detail/gemavatar/jpilaleommoebpebjbafdiflmfphkmbc",
+        iconType: "avatar" as const,
+    },
+    {
+        name: "NotebookLM Avatar",
+        description:
+            "Google NotebookLMのノートブックアイコンをカスタム画像に変更。視覚的にプロジェクトを識別できるようになります。",
+        url: "https://chromewebstore.google.com/detail/notebooklm-avatar/ilmjngpanfgbcibfhbcnapadmfijhkom",
+        iconType: "notebooklm" as const,
+    },
+    {
+        name: "ウラヨミ！",
+        description:
+            "YouTube動画のコメントをGoogle Gemini AIで解析し、視聴者の本音を可視化。感情分析・トピック抽出・Hidden Gems発掘機能搭載。",
+        url: "https://chromewebstore.google.com/detail/%E3%82%A6%E3%83%A9%E3%83%A8%E3%83%9F%EF%BC%81-powered-by-google-g/mhgmmpapgdegmimfdgmanbdakeopmojn",
+        iconType: "urayomi" as const,
+    },
+];
+---
+
+<BaseLayout title="APPS" description="Chrome拡張機能作品一覧">
+    <section class="pt-32 pb-16 md:pt-40 md:pb-24">
+        <SectionTitle client:visible title="APPS" />
+    </section>
+
+    <!-- Intro -->
+    <section class="pb-16 md:pb-20">
+        <div class="flex items-start gap-6 mb-12">
+            <div
+                class="flex-shrink-0 w-16 h-16 flex items-center justify-center bg-kg-bg-alt border border-kg-border rounded-sm overflow-hidden"
+            >
+                <img
+                    src="/images/chrome.png"
+                    alt="Chrome"
+                    class="w-12 h-12 object-contain"
+                />
+            </div>
+            <div>
+                <span
+                    class="inline-block font-display text-xs tracking-[0.2em] text-kg-accent mb-2"
+                >
+                    CHROME EXTENSION DEVELOPER
+                </span>
+                <p class="font-serif text-kg-text-muted leading-relaxed max-w-2xl">
+                    ユーザーの生産性向上やブラウジング体験の改善を目的としたChrome拡張機能を開発・公開しています。
+                    すべてChrome Web Storeからインストールできます。
+                </p>
+            </div>
+        </div>
+
+        <!-- Tech Stack Tags -->
+        <div class="flex flex-wrap gap-2">
+            {
+                [
+                    "TypeScript",
+                    "Chrome Extensions API",
+                    "React",
+                    "JavaScript",
+                    "Web Development",
+                ].map((skill) => (
+                    <span class="px-3 py-1 text-xs font-display tracking-wider bg-kg-bg-alt border border-kg-border text-kg-text-muted rounded-sm">
+                        {skill}
+                    </span>
+                ))
+            }
+        </div>
+    </section>
+
+    <!-- Pickup -->
+    <section class="pb-16 md:pb-20">
+        <h2
+            class="font-display text-xs tracking-[0.3em] text-kg-accent mb-8 flex items-center gap-4"
+        >
+            <span class="w-8 h-px bg-kg-accent"></span>
+            PICKUP
+        </h2>
+
+        <a
+            href="https://chromewebstore.google.com/detail/%E3%82%A6%E3%83%A9%E3%83%A8%E3%83%9F%EF%BC%81-powered-by-google-g/mhgmmpapgdegmimfdgmanbdakeopmojn"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group block relative p-8 md:p-12 bg-kg-surface border border-kg-border rounded-sm hover:border-kg-accent/50 transition-all duration-300 overflow-hidden"
+        >
+            <!-- Accent glow -->
+            <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-kg-accent/40 to-transparent"></div>
+
+            <div class="flex flex-col md:flex-row items-start gap-8">
+                <!-- Large Icon -->
+                <div class="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 rounded-lg overflow-hidden bg-kg-bg-alt border border-kg-border">
+                    <img
+                        src="/images/extensions/urayomi.png"
+                        alt="ウラヨミ！"
+                        class="w-full h-full object-cover"
+                    />
+                </div>
+
+                <!-- Content -->
+                <div class="flex-1">
+                    <span class="inline-block font-display text-xs tracking-[0.2em] text-kg-accent mb-2">
+                        FEATURED
+                    </span>
+                    <h3 class="font-serif text-2xl md:text-3xl text-kg-text group-hover:text-kg-accent transition-colors duration-300 mb-3">
+                        ウラヨミ！
+                    </h3>
+                    <p class="font-display text-xs tracking-wider text-kg-text-muted mb-4">
+                        Powered by Google Gemini
+                    </p>
+                    <p class="font-serif text-kg-text-muted leading-relaxed mb-6 max-w-2xl">
+                        YouTube動画のコメント欄をGoogle Gemini AIの力で丸ごと解析するChrome拡張機能。
+                        数千件のコメントを瞬時に分析して、視聴者の「本音」を可視化します。
+                        感情分析・トピック抽出・Hidden Gems発掘など、多彩な解析機能を搭載。
+                    </p>
+
+                    <!-- Feature Tags -->
+                    <div class="flex flex-wrap gap-2">
+                        {
+                            ["AI解析", "感情分析", "トピック抽出", "Hidden Gems", "キャラクターモード", "多言語対応"].map((tag) => (
+                                <span class="px-3 py-1 text-xs font-display tracking-wider bg-kg-bg-alt border border-kg-border text-kg-text-muted rounded-sm">
+                                    {tag}
+                                </span>
+                            ))
+                        }
+                    </div>
+                </div>
+
+                <!-- Arrow -->
+                <span class="hidden md:block flex-shrink-0 text-2xl text-kg-text-muted group-hover:text-kg-accent transition-colors duration-300">
+                    &rarr;
+                </span>
+            </div>
+
+            <!-- Bottom accent line -->
+            <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-kg-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </a>
+    </section>
+
+    <!-- Extensions Grid -->
+    <section class="pb-24 md:pb-32">
+        <h2
+            class="font-display text-xs tracking-[0.3em] text-kg-accent mb-8 flex items-center gap-4"
+        >
+            <span class="w-8 h-px bg-kg-accent"></span>
+            PUBLISHED EXTENSIONS
+        </h2>
+
+        <div class="grid grid-cols-1 gap-4">
+            {
+                extensions.map((ext, index) => (
+                    <ExtensionCard
+                        client:visible
+                        name={ext.name}
+                        description={ext.description}
+                        url={ext.url}
+                        iconType={ext.iconType}
+                        delay={0.1 + index * 0.1}
+                    />
+                ))
+            }
+        </div>
+
+        <!-- Extension Count -->
+        <div class="mt-12 text-center">
+            <p class="font-display text-xs tracking-[0.2em] text-kg-text-muted">
+                {extensions.length} EXTENSIONS PUBLISHED ON CHROME WEB STORE
+            </p>
+        </div>
+    </section>
+</BaseLayout>

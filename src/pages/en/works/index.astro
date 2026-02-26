@@ -3,32 +3,6 @@
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import SectionTitle from "../../../components/ui/SectionTitle";
 import SkillSection from "../../../components/ui/SkillSection";
-import ExtensionCard from "../../../components/ui/ExtensionCard";
-
-// Chrome Extensions data (English)
-const extensions = [
-    {
-        name: "Realtime!",
-        description:
-            "Perfect for live commentary. Displays real-time search in a side panel with auto-refresh and filter features.",
-        url: "https://chromewebstore.google.com/detail/%E3%83%AA%E3%82%A2%E3%82%BF%E3%82%A4%EF%BC%81/indeiidgljnaokghbdogclapjjngmnkb",
-        iconType: "realtime" as const,
-    },
-    {
-        name: "radiko Scheduler",
-        description:
-            "Create a schedule for automatic switching and playback. Automates daily radio listening to prevent missed shows.",
-        url: "https://chromewebstore.google.com/detail/radiko%E3%81%8B%E3%82%93%E3%81%9F%E3%82%93%E4%BA%88%E7%B4%84%E3%82%B9%E3%82%B1%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%A9%E3%83%BC/nolggejdjkibdokfheilodifknlifipk",
-        iconType: "radio" as const,
-    },
-    {
-        name: "GemAvatar",
-        description:
-            "Customize your Google Gemini user avatar. Set different icons for each Gem.",
-        url: "https://chromewebstore.google.com/detail/gemavatar/jpilaleommoebpebjbafdiflmfphkmbc",
-        iconType: "avatar" as const,
-    },
-];
 ---
 
 <BaseLayout
@@ -87,78 +61,23 @@ const extensions = [
             SIDE WORK
         </h2>
 
-        <div
-            class="relative p-8 md:p-12 bg-kg-surface border border-kg-border rounded-sm"
-        >
-            <!-- Header -->
-            <div class="flex items-start gap-6 mb-8">
-                <div
-                    class="flex-shrink-0 w-16 h-16 flex items-center justify-center bg-kg-bg-alt border border-kg-border rounded-sm overflow-hidden"
-                >
-                    <img
-                        src="/images/chrome.png"
-                        alt="Chrome"
-                        class="w-12 h-12 object-contain"
-                    />
-                </div>
-                <div>
-                    <span
-                        class="inline-block font-display text-xs tracking-[0.2em] text-kg-accent mb-2"
-                    >
-                        CHROME EXTENSION DEVELOPER
-                    </span>
-                    <h3 class="font-serif text-2xl md:text-3xl text-kg-text">
-                        3 Extensions Published
-                    </h3>
-                    <p
-                        class="mt-2 font-serif text-kg-text-muted leading-relaxed"
-                    >
-                        I develop Chrome extensions as a side project. I create
-                        and publish extensions aimed at improving user
-                        productivity and enhancing the browsing experience.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Skills -->
-            <div class="flex flex-wrap gap-2 mb-8">
-                {
-                    [
-                        "TypeScript",
-                        "Chrome Extensions API",
-                        "React",
-                        "Web Development",
-                        "JavaScript",
-                    ].map((skill) => (
-                        <span class="px-3 py-1 text-xs font-display tracking-wider bg-kg-bg-alt border border-kg-border text-kg-text-muted rounded-sm">
-                            {skill}
-                        </span>
-                    ))
-                }
-            </div>
-
-            <!-- Extensions List -->
-            <div class="space-y-4">
-                <h4
-                    class="font-display text-xs tracking-[0.2em] text-kg-text-muted mb-4"
-                >
-                    PUBLISHED EXTENSIONS
-                </h4>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    {
-                        extensions.map((ext, index) => (
-                            <ExtensionCard
-                                client:visible
-                                name={ext.name}
-                                description={ext.description}
-                                url={ext.url}
-                                iconType={ext.iconType}
-                                delay={0.1 + index * 0.1}
-                            />
-                        ))
-                    }
-                </div>
-            </div>
-        </div>
+        <SkillSection
+            client:visible
+            iconImage="/images/chrome.png"
+            category="CHROME EXTENSION DEVELOPER"
+            title="Extensions Published"
+            description={[
+                "I develop Chrome extensions as a side project. I create and publish extensions aimed at improving user productivity and enhancing the browsing experience.",
+            ]}
+            skills={[
+                "TypeScript",
+                "Chrome Extensions API",
+                "React",
+                "JavaScript",
+                "Web Development",
+            ]}
+            link={{ text: "VIEW ALL APPS", href: "/en/apps" }}
+            delay={0.2}
+        />
     </section>
 </BaseLayout>

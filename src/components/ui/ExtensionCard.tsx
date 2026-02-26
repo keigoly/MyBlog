@@ -6,13 +6,15 @@ const iconImages: Record<string, string> = {
     realtime: '/images/extensions/realtime.png',
     radio: '/images/extensions/radiko.png',
     avatar: '/images/extensions/gemavatar.png',
+    notebooklm: '/images/extensions/notebooklm.png',
+    urayomi: '/images/extensions/urayomi.png',
 };
 
 interface ExtensionCardProps {
     name: string;
     description: string;
     url: string;
-    iconType?: 'realtime' | 'radio' | 'avatar';
+    iconType?: 'realtime' | 'radio' | 'avatar' | 'notebooklm' | 'urayomi';
     delay?: number;
 }
 

@@ -98,8 +98,7 @@ export default function SkillSection({
                 {link && (
                     <motion.a
                         href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        {...(link.href.startsWith('/') ? {} : { target: "_blank", rel: "noopener noreferrer" })}
                         className="inline-flex items-center gap-2 text-kg-accent hover:text-kg-text transition-colors duration-300"
                         whileHover={{ x: 4 }}
                     >
